@@ -7,10 +7,13 @@ public class MyMain {
     //     4
     //     2
     public static void printEvensBackwards(int[] arr) {
-        // REPLACE THIS WITH YOUR CODE
-        return;
+        Arrays.sort(arr);
+        for (int i = arr.length-1; i >= 0; i--) {
+            if (arr[i] % 2 == 0) {
+                System.out.println(arr[i]);
+            }
+        }
     }
-
     // Next, write a method that checks if an array is sorted in
     // strictly increasing order (i.e. each element must be greater
     // than the previous element)
@@ -18,10 +21,13 @@ public class MyMain {
     //     isIncreasing([1, 1, 3, 6, 7]) => false (because 1 is not > 1)
     //     isIncreasing([1, 2, 3, 2, 4, 5, 8]) => false
     public static boolean isIncreasing(int[] arr) {
-        // REPLACE THIS WITH YOUR CODE
-        return false;
+        for (int i = 0; i < arr.length-1; i++) {
+            if (!(arr[i] < arr[i+1])) {
+                return false;
+            }
+        }
+        return true;
     }
-
     // (Maybe Optional):
     // Write a method that checks if an array is "balanced". An array
     // is balanced if the first and last values differ by at most 2, and
@@ -30,7 +36,6 @@ public class MyMain {
     //     isBalanced([1, 2, 3, 4, 1, -1]) => true
     //     isBalanced([1, 2, 3, 7, 2, 1]) => false (because 7 - 3 > 2)
     public static boolean isBalanced(int[] arr) {
-        // REPLACE THIS WITH YOUR CODE
         return false;
     }
 
@@ -39,20 +44,32 @@ public class MyMain {
     // Ex: containsDuplicates([1, 2, 3, 2, 1]) => true
     //     containsDuplicates([7, 2, 3, 4, 1, 5]) => false
     public static boolean containsDuplicates(int[] arr) {
-        // REPLACE THIS WITH YOUR CODE
+        for (int i = 0; i < arr.length; i++) {
+            for (int x = i+1; x<arr.length; x++)
+            if (arr[i] == arr[x]) {
+                return true;
+            }
+        }
         return false;
     }
-
     // Sorting:
     // Implement the bubble sort algorithm that we discussed in class
     // to sort our code
     // This algorithm returns the sorted array
     public static int[] bubbleSort(int[] arr) {
-        // REPLACE THIS WITH YOUR CODE
+        int num=0;
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length -i- 1; j++) {
+                if (arr[j] > arr[j+1]) {
+                     num = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = num;
+                }
+
+            }
+        }
         return arr;
     }
-
-
     public static void main(String[] args) {
         System.out.println("printEvensBackwards Tests:");
         printEvensBackwards(new int[] {1, 2, 3, 4, 5, 6});
